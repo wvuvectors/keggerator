@@ -1,0 +1,103 @@
+#! /usr/bin/env bash
+
+here=$(dirname "$0")
+. "$here/version"
+
+
+while getopts ":hvdi:o:a:" opt; do
+	case $opt in
+		h)
+			echo "
+keggerator v$VERSION.
+
+Usage:
+  keggerator compile -a FILE (-m DIR &| -p DIR &| -b DIR) [-o OUTBASE] [-d]
+  keggerator transfer -t FILE -g FILE [-o OUTBASE]
+  keggerator reconstruct 
+  keggerator khole 
+  keggerator -h
+  keggerator -v
+
+Options:
+  -h          Show this screen.
+  -v          Show version.
+  -d          Print debug info and temp files to working dir.
+
+compile 
+  -a FILE     Protein fasta file used as original input to BlastKOALA, for retrieving annotations.
+  -p DIR      Directory containing the BlastKOALA pathway html files.
+  -m DIR      Directory containing the BlastKOALA module html files.
+  -b DIR      Directory containing the BlastKOALA brite html files.
+  -o OUTBASE  Print taxon-sorted summaries to files that begin with OUTBASE [default: kcompile.out].
+
+transfer 
+  -t FILE     Output table from kcompile.
+  -g FILE     Output file (.end) from ogre/orthoMCL containing the ortholog group assignments.
+  -o OUTBASE  Print to file OUTBASE [default: ktransfer.out].
+
+"
+			exit 0
+			;;
+		v)
+			echo "
+keggerator.
+VERSION:  $VERSION.
+RELEASED: $RELEASE_DATE.
+AUTHORS:  $AUTHORS.
+
+$LICENSE_STR
+
+Please visit https://github.com/driscollmml/keggerator for more information or to download the source code.
+
+"
+			exit 0
+			;;
+		i)
+			indir=$OPTARG
+			;;
+		a)
+			annfile=$OPTARG
+			;;
+		o)
+			outbase=$OPTARG
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+		:)
+			echo "Option -$OPTARG requires an argument." >&2
+			exit 1
+			;;
+	esac
+done
+
+
+if [ -z "$idFile" ]; then
+	echo "FATAL : You must provide an input file (-i) containing OG ids to extract."
+	exit 1
+fi
+
+if [ -z "$outbase" ]; then
+	outbase="generic"
+fi
+
+
+taxaFile="phylo_order.txt"
+fastaFile="rcg_84.outno.faa"
+ogFile="rcg_84.outno.1.5.end"
+
+cp "$idFile" "$idFile.min"
+perl -pi -e 's/^.+?\t(.+?)\t.+$/$1/gi' "$idFile.min"
+
+og_extract.pl -i "$idFile.min" < $ogFile > "$outbase.pw_oglist.end"
+og_tabulate.pl -v lengths -s $taxaFile -a $taxaFile $fastaFile < "$outbase.pw_oglist.end" | table_transpose.pl > "$outbase.pw_ogtable.txt"
+
+# replace OG with locus tag and subdivide by group
+phylow_group.pl "$idFile" < "$outbase.pw_ogtable.txt" > "$outbase.pw_grid.txt"
+
+rm "$idFile.min"
+
+
+exit 0
+

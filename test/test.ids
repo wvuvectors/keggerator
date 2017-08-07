@@ -1,0 +1,259 @@
+#KO	#ogid	#locus	#pathway
+			
+K00012	496	ugd	O-antigen polymerization
+K17716	699	fnlA/capD	O-antigen polymerization
+K01791	574	wecB	O-antigen polymerization
+K02851	80	wecA	O-antigen carrier synthesis
+K00677	314	LpxA	lipd A synthesis
+K00790	673	murA	lipid I (PG) synthesis
+K01808	506	rpiB	LPS synthesis
+K04042	137	glmU	N-acetylglucosamine pre
+K00858	676	ppnK	nicotinamide metabolism
+K00324	674	pntA	nicotinamide metabolism
+K00324	736	pntA	nicotinamide metabolism
+K00325	567	pntB	nicotinamide metabolism
+K00325	2949	pntB	nicotinamide metabolism
+#K00323		pntAB	nicotinamide metabolism
+			
+			
+# pyruvate metabolism			
+K01006	755	ppdK	pyruvate metabolism - phosphoenolpyruvate (PEP) biosynthesis
+K01754	520	tdcB	pyruvate metabolism - glycine/serine biosynthesis
+K01754	2385	tdcB	pyruvate metabolism - glycine/serine biosynthesis
+K00600	97	glyA	pyruvate metabolism - glycine/serine biosynthesis
+K00161	135	pdhA	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)
+K00162	202	pdhB	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)
+K00627	455	pdhC	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)
+K00382	293	lpD	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)
+K00382	570	lpD	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)
+			
+			
+# citrate cycle (TCA cycle)			
+K00029	303	maeB	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
+K00024	511	mdh	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
+K01647	238	gltA	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
+K01681	356	acnA	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
+K00031	704	icd	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
+K00164	554	sucA	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K00658	226	sucB	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K00382	293	lpd	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K00382	570	lpd	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K01903	331	sucC	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K01902	541	sucD	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K00239	662	sdhA	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K00240	308	sdhB	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K00241	525	sdhC	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K00242	145	sdhD	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K01679	340	fumC	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
+K00812	264	aspB/C	citrate cycle (TCA cycle) IIb - glutamate metabolism
+K00266	494	gltD	citrate cycle (TCA cycle) IIb - glutamate metabolism
+K15371	267	gdhX	citrate cycle (TCA cycle) IIb - glutamate metabolism
+K01915	838	glnA	citrate cycle (TCA cycle) IIb - glutamate metabolism
+			
+			
+			
+# aspartate metabolism			
+K00928	413	lysC	aspartate metabolism
+K00928	3188	lysC	aspartate metabolism
+K00133	384	asd	aspartate metabolism
+K01714	524	dapA	aspartate metabolism
+K00215	695	dapB	aspartate metabolism
+K00674	522	dapD	aspartate metabolism
+K00821	-1	argD/dapC	aspartate metabolism
+K14267	-1	argD/dapC	aspartate metabolism
+K01439	251	dapE	aspartate metabolism
+K01778	528	dapF	aspartate metabolism
+# dapF leads into PG biosynthesis at murEF step			
+			
+			
+# peptidoglycan biosynthesis			
+K00790	673	murA	peptidoglycan biosynthesis
+K00075	478	murB	peptidoglycan biosynthesis
+K01924	125	murC	peptidoglycan biosynthesis
+K01925	803	murD	peptidoglycan biosynthesis
+K01928	209	murE	peptidoglycan biosynthesis
+K01775	90	alr	peptidoglycan biosynthesis
+K01921	615	ddl	peptidoglycan biosynthesis
+K01929	460	murF	peptidoglycan biosynthesis
+K01000	160	mraY	peptidoglycan biosynthesis
+K02563	573	murG	peptidoglycan biosynthesis
+K03980	504	murJ	peptidoglycan biosynthesis
+K05367	766	pbpC	peptidoglycan biosynthesis
+K03587	146	ftsI	peptidoglycan biosynthesis
+K05366	630	mrcA	peptidoglycan biosynthesis
+K05515	569	mrdA	peptidoglycan biosynthesis
+K05515	3511	mrdA	peptidoglycan biosynthesis
+			
+# LPS biosynthesis			
+K01808	506	rpiB	LPS biosynthesis
+K06041	537	kdsD	LPS biosynthesis
+K01627	149	kdsA	LPS biosynthesis
+K03270	-2	kdsC	LPS biosynthesis
+K00979	393	kdsB	LPS biosynthesis
+K00677	314	lpxA	LPS biosynthesis
+K02535	119	lpxC	LPS biosynthesis
+K02536	82	lpxD	LPS biosynthesis
+K09949	129	lpxI	LPS biosynthesis
+K00748	703	lpxB	LPS biosynthesis
+K00912	176	lpxK	LPS biosynthesis
+K02527	102	waaA/kdtA	LPS biosynthesis
+K02517	561	lpxL	LPS biosynthesis
+K09778	83	lpxJ	LPS biosynthesis
+			
+			
+# glycerophospholipid biosynthesis			
+K00057	815	gpsA	glycerophospholipid biosynthesis I - DAG biosynthesis
+K03621	-3	plsX	glycerophospholipid biosynthesis I - DAG biosynthesis
+K00631	-3	plsB	glycerophospholipid biosynthesis I - DAG biosynthesis
+K08591	-3	plsY	glycerophospholipid biosynthesis I - DAG biosynthesis
+K00655	277	plsC	glycerophospholipid biosynthesis I - DAG biosynthesis
+K00981	499	cdsA	glycerophospholipid biosynthesis I - DAG biosynthesis
+K08744	235	pgsA	glycerophospholipid biosynthesis IIb - phosphatidylglycerol biosynthesis
+K01095	289	pgpA	glycerophospholipid biosynthesis IIb - phosphatidylglycerol biosynthesis
+K17103	334	pssA	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
+K01613	230	psd	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
+K05939	142	aas	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
+K17717	57	pld	glycerophospholipid biosynthesis I - DAG biosynthesis
+			
+# polyhydroxybutyrate (PHB) metabolism			
+K00625	958	phbA	polyhydroxybutyrate (PHB) metabolism
+K00023	787	phbB	polyhydroxybutyrate (PHB) metabolism
+K03821	35	phbC	polyhydroxybutyrate (PHB) metabolism
+K03821	779	phbC	polyhydroxybutyrate (PHB) metabolism
+			
+			
+# heme biosynthesis			
+K00643	427	hemA/alaS	heme biosynthesis Ia - glycine pathway
+K01845	2759	hemL	heme biosynthesis Ib - glutamate pathway
+K01845	3296	hemL	heme biosynthesis Ib - glutamate pathway
+K01698	585	hemB	heme biosynthesis II - protoheme biosynthesis
+K01749	262	hemC	heme biosynthesis II - protoheme biosynthesis
+K01719	392	hemD	heme biosynthesis II - protoheme biosynthesis
+K01599	342	hemE	heme biosynthesis II - protoheme biosynthesis
+K00228	252	hemF	heme biosynthesis II - protoheme biosynthesis
+K02495	786	hemN	heme biosynthesis II - protoheme biosynthesis
+K00231	223	hemJ	heme biosynthesis II - protoheme biosynthesis
+K01772	693	hemH	heme biosynthesis II - protoheme biosynthesis
+K02301	748	cyoE/ctaB	heme biosynthesis III - heme A biosynthesis
+K02259	778	COX15/ctaA	heme biosynthesis III - heme A biosynthesis
+K02259	2563	COX15/ctaA	heme biosynthesis III - heme A biosynthesis
+			
+			
+# fa biosynthesis			
+K00859	616	coaE	fatty acid biosynthesis Ia - malonyl CoA from dephospho-CoA
+K02078	248	acpP	fatty acid biosynthesis Ia - malonyl CoA from dephospho-CoA
+K00626	896	acpS	fatty acid biosynthesis Ia - malonyl CoA from dephospho-CoA
+K00626	3528	acpS	fatty acid biosynthesis Ia - malonyl CoA from dephospho-CoA
+K03524	680	birA	fatty acid biosynthesis Ib - malonyl CoA from biotin
+K01965	217	pccA	fatty acid biosynthesis Ib - malonyl CoA from biotin
+K01966	602	pccB	fatty acid biosynthesis Ib - malonyl CoA from biotin
+K00645	216	fabD	fatty acid biosynthesis II
+K00648	575	fabH	fatty acid biosynthesis II
+K00648	3477	fabH	fatty acid biosynthesis II
+K00059	355	fabG	fatty acid biosynthesis II
+K02372	132	fabZ	fatty acid biosynthesis II
+K00208	582	fabI	fatty acid biosynthesis II
+K09458	192	fabF	fatty acid biosynthesis II
+			
+			
+# lipoic acid biosynthesis			
+K03801	170	lipB	lipoic acid biosynthesis
+K03644	78	lipA	lipoic acid biosynthesis
+			
+			
+# terpenoid backbone biosynthesis			
+K01823	814	idi	terpenoid backbone biosynthesis
+K00795	-4	ispA	terpenoid backbone biosynthesis
+K02523	510	ispB	terpenoid backbone biosynthesis
+K00806	440	ispU	terpenoid backbone biosynthesis
+K01096	594	pgpB	terpenoid backbone biosynthesis
+K02851	80	wecA	terpenoid backbone biosynthesis
+K01000	160	mraY	terpenoid backbone biosynthesis
+			
+			
+# ubiquinone biosynthesis			
+K03181	-5	ubiC	ubiquinone biosynthesis
+K03179	366	ubiA	ubiquinone biosynthesis
+K03186	112	ubiX	ubiquinone biosynthesis
+K03182	313	ubiD	ubiquinone biosynthesis
+K18800	-5	ubiI	ubiquinone biosynthesis
+K00568	352	ubiG	ubiquinone biosynthesis
+K03185	396	ubiH	ubiquinone biosynthesis
+K03183	412	ubiE	ubiquinone biosynthesis
+K06134	295	coq7	ubiquinone biosynthesis
+			
+			
+# folate metabolism			
+K01495	116	folE	folate metabolism
+K01633	2812	folB	folate metabolism
+K06137	1040	(frC)	folate metabolism
+K00950	70	folKP	folate metabolism
+K00796	70	folKP	folate metabolism
+K00796	1612	folP	folate metabolism
+K11754	357	folC	folate metabolism
+K00287	1022	folA	folate metabolism
+			
+			
+# folate one-carbon pool			
+K11754	357	folC	folate one-carbon pool
+K03465	245	thyX	folate one-carbon pool
+K00604	196	fmt	folate one-carbon pool
+K00600	97	glyA	folate one-carbon pool
+K01754	520	tdcB	folate one-carbon pool
+K01754	2385	tdcB	folate one-carbon pool
+K01491	438	folD	folate one-carbon pool
+K01934	733	ygfA/MTHFS	folate one-carbon pool
+			
+			
+# queosine biosynthesis			
+K01495	116	folE	queuosine biosynthesis
+K01737	98	queD	queuosine biosynthesis
+K10026	236	queE	queuosine biosynthesis
+K06920	563	queC	queuosine biosynthesis
+K06879	612	queF	queuosine biosynthesis
+K00773	77	tgt	queuosine biosynthesis
+K07568	790	queA	queuosine biosynthesis
+K18979	-6	queG	queuosine biosynthesis
+			
+			
+# biotin			
+K02169	2437	bioC	biotin biosynthesis
+K09458	192	fabF	biotin biosynthesis
+K00059	355	fabG	biotin biosynthesis
+K02372	132	fabZ	biotin biosynthesis
+K00208	582	fabI	biotin biosynthesis
+K02170	2435	bioH	biotin biosynthesis
+K00652	2440	bioF	biotin biosynthesis
+K00833	2441	bioA	biotin biosynthesis
+K01935	2438	bioD	biotin biosynthesis
+K01012	1588	bioB	biotin biosynthesis
+			
+			
+# nucleotide metabolism			
+K00945	86	cmk	nucleotide metabolism
+K09903	656	pyrH	nucleotide metabolism
+K00940	280	ndk	nucleotide metabolism
+K00525	457	nrdA	nucleotide metabolism
+K00526	659	nrdB	nucleotide metabolism
+K00384	284	trxB	nucleotide metabolism
+K00384	687	trxB	nucleotide metabolism
+K00943	155	tmk	nucleotide metabolism
+K00943	2177	tmk	nucleotide metabolism
+K00943	2947	tmk	nucleotide metabolism
+K01520	476	dut	nucleotide metabolism
+K03465	245	thyX	nucleotide metabolism
+K00962	465	pnp	nucleotide metabolism
+K01937	837	pyrG	nucleotide metabolism
+K01937	2048	pyrG	nucleotide metabolism
+K01494	507	dcd	nucleotide metabolism
+K00942	514	gmk	nucleotide metabolism
+K01129	258	dgt	nucleotide metabolism
+K00951	865	relA/ spoT?	nucleotide metabolism
+K00951	1019	relA/ spoT?	nucleotide metabolism
+K00951	1292	relA/ spoT?	nucleotide metabolism
+K00951	1457	relA/ spoT?	nucleotide metabolism
+K00951	2042	relA/ spoT?	nucleotide metabolism
+K00951	2743	relA/ spoT?	nucleotide metabolism
+K01524	406	ppx-gppA	nucleotide metabolism
+K00939	734	adk	nucleotide metabolism
+K01923	654	purC	nucleotide metabolism

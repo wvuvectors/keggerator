@@ -1,0 +1,84 @@
+#! /usr/bin/env bash
+
+here=$(dirname "$0")
+. "$here/version"
+
+
+while getopts ":hvt:g:o:" opt; do
+	case $opt in
+		h)
+			echo "
+ktransfer v $VERSION.
+Created by $AUTHORS.
+
+Usage:
+  ktransfer -t FILE -g FILE [-o OUTBASE]
+  ktransfer -h
+  ktransfer -v
+
+Options:
+  -h          Show this screen.
+  -v          Show version.
+  -t FILE     Output table from kcompile.
+  -g FILE     Output file (.end) from ogre/orthoMCL containing the ortholog group assignments.
+  -o OUTBASE  Print to file OUTBASE [default: ktransfer.out].
+
+"
+			exit 0
+			;;
+		v)
+			echo "
+ktransfer is part of the keggerator package.
+VERSION:  $VERSION.
+RELEASED: $RELEASE_DATE.
+AUTHORS:  $AUTHORS.
+
+$LICENSE_STR
+
+Please visit https://github.com/driscollmml/keggerator for more information or to download the source code.
+
+"
+			exit 0
+			;;
+		t)
+			ktable_f=$OPTARG
+			;;
+		g)
+			og_f=$OPTARG
+			;;
+		o)
+			outbase=$OPTARG
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+		:)
+			echo "Option -$OPTARG requires an argument." >&2
+			exit 1
+			;;
+	esac
+done
+
+
+if [ -z "$ktable_f" ]; then
+	echo "FATAL : You must provide the output table from kcompile (-t)." >&2
+	exit 1
+fi
+
+if [ -z "$og_f" ]; then
+	echo "FATAL : You must provide the output file (.end) from ogre or orthoMCL (-g)." >&2
+	exit 1
+fi
+
+if [ -z "$outbase" ]; then
+	echo "WARN  : No output base string provided (-o). Using the default 'ktransfer.out' instead." >&2
+	outbase="ktransfer.table.txt"
+else
+	outbase="$outbase.ktransfer.table.txt"
+fi
+
+"$here/perl/og_ko2og.pl" "$og_f" < "$ktable_f" > "$outbase"
+
+exit 0
+

@@ -1,0 +1,91 @@
+#! /usr/bin/env bash
+
+here=$(dirname "$0")
+. "$here/version"
+
+
+while getopts ":hvdi:o:a:" opt; do
+	case $opt in
+		h)
+			echo "
+kreconstruct v$VERSION.
+
+Usage:
+	kreconstruct -i INDIR -o OUTBASE -a FILE
+	kreconstruct -h
+	kreconstruct -v
+
+Options:
+	-h 						help					Show this screen.
+	-v						version				Show version.
+	-d						debug					Print debug info and temp files to working dir.
+	-i INDIR			input					Directory containing the BlastKOALA output html files.
+	-a FILE				annotations		Protein fasta file used as original input to BlastKOALA. FILE will be used to annotate the kcompile results table.
+	-o OUTBASE		output				Print summaries, organized by taxon in ann_file, using OUTBASE to build the output file names.
+
+"
+			exit 0
+			;;
+		v)
+			echo "
+kreconstruct is part of the keggerator package.
+VERSION:  $VERSION.
+RELEASED: $RELEASE_DATE.
+AUTHORS:  $AUTHORS.
+
+$LICENSE_STR
+
+Please visit https://github.com/driscollmml/keggerator for more information or to download the source code.
+
+"
+			exit 0
+			;;
+		i)
+			indir=$OPTARG
+			;;
+		a)
+			annfile=$OPTARG
+			;;
+		o)
+			outbase=$OPTARG
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+		:)
+			echo "Option -$OPTARG requires an argument." >&2
+			exit 1
+			;;
+	esac
+done
+
+
+if [ -z "$idFile" ]; then
+	echo "FATAL : You must provide an input file (-i) containing OG ids to extract."
+	exit 1
+fi
+
+if [ -z "$outbase" ]; then
+	outbase="generic"
+fi
+
+
+taxaFile="phylo_order.txt"
+fastaFile="rcg_84.outno.faa"
+ogFile="rcg_84.outno.1.5.end"
+
+cp "$idFile" "$idFile.min"
+perl -pi -e 's/^.+?\t(.+?)\t.+$/$1/gi' "$idFile.min"
+
+og_extract.pl -i "$idFile.min" < $ogFile > "$outbase.pw_oglist.end"
+og_tabulate.pl -v lengths -s $taxaFile -a $taxaFile $fastaFile < "$outbase.pw_oglist.end" | table_transpose.pl > "$outbase.pw_ogtable.txt"
+
+# replace OG with locus tag and subdivide by group
+phylow_group.pl "$idFile" < "$outbase.pw_ogtable.txt" > "$outbase.pw_grid.txt"
+
+rm "$idFile.min"
+
+
+exit 0
+

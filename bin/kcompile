@@ -1,0 +1,135 @@
+#! /usr/bin/env bash
+
+
+here=$(dirname "$0")
+. "$here/version"
+
+
+while getopts ":hvda:p:m:b:o:" opt; do
+	case $opt in
+		h)
+			echo "
+kcompile v $VERSION.
+Created by $AUTHORS.
+
+Usage:
+  kcompile -a FILE (-m DIR &| -p DIR &| -b DIR) [-o OUTBASE] [-d]
+  kcompile -h
+  kcompile -v
+
+Options:
+  -h          Show this screen.
+  -v          Show version.
+  -d          Print debug info and temp files to working dir.
+  -a FILE     Protein fasta file used as original input to BlastKOALA, for retrieving annotations.
+  -p DIR      Directory containing the BlastKOALA pathway html files.
+  -m DIR      Directory containing the BlastKOALA module html files.
+  -b DIR      Directory containing the BlastKOALA brite html files.
+  -o OUTBASE  Print taxon-sorted summaries to files that begin with OUTBASE [default: kcompile.out].
+
+"
+			exit 0
+			;;
+		v)
+			echo "
+kcompile is part of the keggerator package.
+VERSION:  $VERSION.
+RELEASED: $RELEASE_DATE.
+AUTHORS:  $AUTHORS.
+
+$LICENSE_STR
+
+Please visit https://github.com/driscollmml/keggerator for more information or to download the source code.
+
+"
+			exit 0
+			;;
+		d)
+			debug=1
+			;;
+		a)
+			ann_f=$OPTARG
+			;;
+		p)
+			pdir=$OPTARG
+			;;
+		m)
+			mdir=$OPTARG
+			;;
+		b)
+			bdir=$OPTARG
+			;;
+		o)
+			outbase=$OPTARG
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+		:)
+			echo "Option -$OPTARG requires an argument." >&2
+			exit 1
+			;;
+	esac
+done
+
+
+if [ -z "$ann_f" ]; then
+	echo "FATAL : You must provide the original protein fasta file used to query BlastKOALA (-a)." >&2
+	exit 1
+fi
+
+if [ -z "$pdir" ] || [ -z "$mdir" ] || [ -z "$bdir" ]; then
+	echo "FATAL : You must provide at least one directory containing pathway (-p), module (-m), or brite (-b) html files from BlastKOALA output." >&2
+	exit 1
+fi
+
+if [ -z "$outbase" ]; then
+	echo "WARN  : No output base string provided (-o). Using the default 'kcompile.out' instead." >&2
+	outbase="kcompile.out"
+fi
+
+
+
+# extract the KO values assigned to each protein id by BlastKOALA
+
+argstr=""
+if [ ! -z "$pdir" ];then
+	argstr="$argstr $pdir"
+fi
+if [ ! -z "$mdir" ];then
+	argstr="$argstr $mdir"
+fi
+if [ ! -z "$bdir" ];then
+	argstr="$argstr $bdir"
+fi
+
+"$here/perl/ko_mapper.pl" $argstr > "$outbase.idmap.txt"
+
+
+
+# catalog the KO assignments by gene
+
+argstr="-a $ann_f"
+if [ ! -z "$pdir" ];then
+	argstr="$argstr -p $pdir"
+fi
+if [ ! -z "$mdir" ];then
+	argstr="$argstr -m $mdir"
+fi
+if [ ! -z "$bdir" ];then
+	argstr="$argstr -b $bdir"
+fi
+#if [ ! -z "$outbase" ];then
+#	argstr="$argstr -o $outbase"
+#fi
+
+if [ ! -z "$debug" ];then
+	argstr="$argstr -debug"
+fi
+
+"$here/perl/parse_koala_output.pl" "$outbase.idmap.txt" $argstr > "$outbase.kcompile.table.txt"
+
+
+exit 0
+
