@@ -1,0 +1,91 @@
+#! /usr/bin/env bash
+
+here=$(dirname "$0")
+. "$here/version"
+
+
+while getopts ":ho:i:p:f" opt; do
+	case $opt in
+		h)
+			echo "help not available."
+			exit 1
+			;;
+		o)
+			outbase=$OPTARG
+			;;
+		i)
+			kolist=$OPTARG
+			;;
+		p)
+			pfile=$OPTARG
+			;;
+		f)
+			force=1
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+		:)
+			echo "Option -$OPTARG requires an argument." >&2
+			exit 1
+			;;
+	esac
+done
+
+if [ -z "$outbase" ]; then
+	echo "FATAL : no output file name provided (use -o)."
+	exit 1
+fi
+
+if [ -z "$kolist" ]; then
+	echo "FATAL : no input file with KEGG ids provided (use -i)."
+	exit 1
+fi
+
+
+echo ""
+echo "kegghole was called with the following settings:"
+echo "   outbase  (-o) = $outbase"
+echo "   KO list  (-i) = $kolist"
+if [ -z "$pfile" ];then
+	echo "   No pattern file was provided (-p)"
+else
+	echo "   patterns (-p) = $pfile"
+fi
+if [ ! -z "$force" ];then
+ echo "   Existing KEGG table will be forcibly removed, if present (-f)"
+fi
+echo ""
+
+
+if [ -f "$outbase.kegg_table.txt" ]; then
+	if [ -z "$force" ];then
+		echo "WARN  : $outbase.kegg_table.txt already exists. Since generating this file is network-intensive, it will not be regenerated."
+		echo "WARN  : Delete $outbase.kegg_table.txt before running kegghole, or use the -f flag to force deletion of an existing KEGG table."
+	else
+		echo "WARN  : $outbase.kegg_table.txt already exists. Since the -f flag is set, this file will be regenerated from KEGG."
+		echo "WARN : The old version will be backed up to $outbase.kegg_table.txt.bk."
+		mv "$outbase.kegg_table.txt" "$outbase.kegg_table.txt.bk"
+		echo "kegghole_parse.pl $outbase < $kolist > $outbase.kegg_table.txt"
+		kegghole_parse.pl $outbase < $kolist > $outbase.kegg_table.txt
+	fi
+else
+	echo "kegghole_parse.pl $outbase < $kolist > $outbase.kegg_table.txt"
+	kegghole_parse.pl $outbase < $kolist > $outbase.kegg_table.txt
+fi
+
+
+if [ -z "$pfile" ];then
+	echo "kegghole_sum.pl $outbase < $outbase.kegg_table.txt"
+	kegghole_sum.pl $outbase < $outbase.kegg_table.txt
+else
+	echo "kegghole_sum.pl -p $pfile $outbase < $outbase.kegg_table.txt"
+	kegghole_sum.pl -p "$pfile" $outbase < $outbase.kegg_table.txt
+fi
+
+echo ""
+echo "kegghole has run to completion."
+
+exit 1
+

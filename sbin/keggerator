@@ -1,0 +1,165 @@
+#! /usr/bin/env bash
+
+here=$(dirname "$0")
+. "$here/version"
+
+
+while getopts ":hvf:g:p:m:b:t:k:o:" opt; do
+	case $opt in
+		h)
+			echo "
+keggerator v$VERSION.
+
+Usage:
+  keggerator -f FA_FILE -g ORTH_FILE (-p PWAY_DIR &| -m MOD_DIR &| -b BRITE_DIR) [-t TAXON_FILE] [-k KNUM_FILE] [-o OUTBASE]
+  keggerator -h
+  keggerator -v
+
+Options:
+  General
+  -h          Show this screen.
+  -v          Show version.
+  
+  Required
+  -f FILE     Protein fasta file used as original input to BlastKOALA.
+  -g FILE     Output file (.end) from ogre/orthoMCL containing the ortholog group assignments.
+  -p DIR      Directory containing the BlastKOALA pathway html files.
+  -m DIR      Directory containing the BlastKOALA module html files.
+  -b DIR      Directory containing the BlastKOALA brite html files.
+  
+  Optional
+  -t FILE     File containing taxa, one per line, in order they should appear in the final output [default: order in the original protein fasta file].
+  -k FILE     File containing K numbers, one per line, that should appear in the final output [default: internal list].
+  -o OUTBASE  Print taxon-sorted summaries to files that begin with OUTBASE [default: kcompile.out].
+
+"
+			exit 0
+			;;
+		v)
+			echo "
+keggerator.
+VERSION:  $VERSION.
+RELEASED: $RELEASE_DATE.
+AUTHORS:  $AUTHORS.
+
+$LICENSE_STR
+
+Please visit https://github.com/driscollmml/keggerator for more information or to download the source code.
+
+"
+			exit 0
+			;;
+		f)
+			fa_f=$OPTARG
+			;;
+		g)
+			og_f=$OPTARG
+			;;
+		p)
+			pdir=$OPTARG
+			;;
+		m)
+			mdir=$OPTARG
+			;;
+		b)
+			bdir=$OPTARG
+			;;
+		t)
+			tax_f=$OPTARG
+			;;
+		k)
+			knum_f=$OPTARG
+			;;
+		o)
+			outbase=$OPTARG
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+		:)
+			echo "Option -$OPTARG requires an argument." >&2
+			exit 1
+			;;
+	esac
+done
+
+
+if [ -z "$fa_f" ]; then
+	echo "FATAL : You must provide the original protein fasta file used to query BlastKOALA (-f)." >&2
+	exit 1
+fi
+
+if [ -z "$og_f" ]; then
+	echo "FATAL : You must provide the orthoMCL or ogre (.end) file containing the ortholog group assignments (-g)." >&2
+	exit 1
+fi
+
+if [ -z "$pdir" ] || [ -z "$mdir" ] || [ -z "$bdir" ]; then
+	echo "FATAL : You must provide at least one directory containing pathway (-p), module (-m), or brite (-b) html files from BlastKOALA output." >&2
+	exit 1
+fi
+
+echo "
+
+##############################################
+thank you for using keggerator!
+VERSION:  $VERSION.
+RELEASED: $RELEASE_DATE.
+AUTHORS:  $AUTHORS.
+
+$LICENSE_STR
+
+Please visit https://github.com/driscollmml/keggerator for more information or to download the source code.
+##############################################
+
+"
+
+if [ -z "$outbase" ]; then
+	echo "WARN  : No output base string provided (-o). Using the default 'kout' instead." >&2
+	outbase="kout"
+fi
+
+
+kcompile_args=""
+if [ ! -z "$pdir" ];then
+	kcompile_args="$kcompile_args -p $pdir"
+fi
+if [ ! -z "$mdir" ];then
+	kcompile_args="$kcompile_args -m $mdir"
+fi
+if [ ! -z "$bdir" ];then
+	kcompile_args="$kcompile_args -b $bdir"
+fi
+echo "kcompile -f \"$fa_f\" $kcompile_args -o \"$outbase\""
+kcompile -f "$fa_f" $kcompile_args -o "$outbase"
+echo ""
+
+
+
+echo "ktransfer -t \"$outbase.kcompile.table.txt\" -g \"$og_f\" -o \"$outbase\""
+ktransfer -t "$outbase.kcompile.table.txt" -g "$og_f" -o "$outbase"
+echo ""
+
+
+krec_args=""
+if [ ! -z "$tax_f" ];then
+	krec_args="$krec_args -t $tax_f"
+fi
+if [ ! -z "$knum_f" ];then
+	krec_args="$krec_args -k $knum_f"
+fi
+echo "kreconstruct -f \"$fa_f\" -g \"$og_f\" -x \"$outbase.ktransfer.table.txt\" $krec_args -o \"$outbase\""
+kreconstruct -f "$fa_f" -g "$og_f" -x "$outbase.ktransfer.table.txt" $krec_args -o "$outbase"
+
+echo "
+
+##############################################
+keggerator $VERSION has completed.
+Final results can be viewed in the file '$outbase.kreconstruct.table.txt'. This is a regular tab-delimited file and can be imported into Excel for easy viewing.
+
+Thank you!
+"
+
+exit 0
+

@@ -1,0 +1,19 @@
+#KO	#ogid	#locus	#pathway
+			
+# peptidoglycan biosynthesis			
+K00790	673	murA	peptidoglycan biosynthesis
+K00075	478	murB	peptidoglycan biosynthesis
+K01924	125	murC	peptidoglycan biosynthesis
+K01925	803	murD	peptidoglycan biosynthesis
+K01928	209	murE	peptidoglycan biosynthesis
+K01775	90	alr	peptidoglycan biosynthesis
+K01921	615	ddl	peptidoglycan biosynthesis
+K01929	460	murF	peptidoglycan biosynthesis
+K01000	160	mraY	peptidoglycan biosynthesis
+K02563	573	murG	peptidoglycan biosynthesis
+K03980	504	murJ	peptidoglycan biosynthesis
+K05367	766	pbpC	peptidoglycan biosynthesis
+K03587	146	ftsI	peptidoglycan biosynthesis
+K05366	630	mrcA	peptidoglycan biosynthesis
+K05515	569	mrdA	peptidoglycan biosynthesis
+K05515	3511	mrdA	peptidoglycan biosynthesis

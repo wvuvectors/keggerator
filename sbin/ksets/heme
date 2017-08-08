@@ -1,0 +1,17 @@
+#KO	#ogid	#locus	#pathway
+
+# heme biosynthesis			
+K00643	427	hemA/alaS	heme biosynthesis Ia - glycine pathway
+K01845	2759	hemL	heme biosynthesis Ib - glutamate pathway
+K01845	3296	hemL	heme biosynthesis Ib - glutamate pathway
+K01698	585	hemB	heme biosynthesis II - protoheme biosynthesis
+K01749	262	hemC	heme biosynthesis II - protoheme biosynthesis
+K01719	392	hemD	heme biosynthesis II - protoheme biosynthesis
+K01599	342	hemE	heme biosynthesis II - protoheme biosynthesis
+K00228	252	hemF	heme biosynthesis II - protoheme biosynthesis
+K02495	786	hemN	heme biosynthesis II - protoheme biosynthesis
+K00231	223	hemJ	heme biosynthesis II - protoheme biosynthesis
+K01772	693	hemH	heme biosynthesis II - protoheme biosynthesis
+K02301	748	cyoE/ctaB	heme biosynthesis III - heme A biosynthesis
+K02259	778	COX15/ctaA	heme biosynthesis III - heme A biosynthesis
+K02259	2563	COX15/ctaA	heme biosynthesis III - heme A biosynthesis

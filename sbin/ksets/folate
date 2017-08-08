@@ -1,0 +1,21 @@
+#KO	#ogid	#locus	#pathway
+
+# folate metabolism			
+K01495	116	folE	folate metabolism
+K01633	2812	folB	folate metabolism
+K06137	1040	(frC)	folate metabolism
+K00950	70	folKP	folate metabolism
+K00796	70	folKP	folate metabolism
+K00796	1612	folP	folate metabolism
+K11754	357	folC	folate metabolism
+K00287	1022	folA	folate metabolism
+
+# folate one-carbon pool			
+K11754	357	folC	folate one-carbon pool
+K03465	245	thyX	folate one-carbon pool
+K00604	196	fmt	folate one-carbon pool
+K00600	97	glyA	folate one-carbon pool
+K01754	520	tdcB	folate one-carbon pool
+K01754	2385	tdcB	folate one-carbon pool
+K01491	438	folD	folate one-carbon pool
+K01934	733	ygfA/MTHFS	folate one-carbon pool

@@ -1,0 +1,17 @@
+#KO	#ogid	#locus	#pathway
+
+# fa biosynthesis			
+K00859	616	coaE	fatty acid biosynthesis Ia - malonyl CoA from dephospho-CoA
+K02078	248	acpP	fatty acid biosynthesis Ia - malonyl CoA from dephospho-CoA
+K00626	896	acpS	fatty acid biosynthesis Ia - malonyl CoA from dephospho-CoA
+K00626	3528	acpS	fatty acid biosynthesis Ia - malonyl CoA from dephospho-CoA
+K03524	680	birA	fatty acid biosynthesis Ib - malonyl CoA from biotin
+K01965	217	pccA	fatty acid biosynthesis Ib - malonyl CoA from biotin
+K01966	602	pccB	fatty acid biosynthesis Ib - malonyl CoA from biotin
+K00645	216	fabD	fatty acid biosynthesis II
+K00648	575	fabH	fatty acid biosynthesis II
+K00648	3477	fabH	fatty acid biosynthesis II
+K00059	355	fabG	fatty acid biosynthesis II
+K02372	132	fabZ	fatty acid biosynthesis II
+K00208	582	fabI	fatty acid biosynthesis II
+K09458	192	fabF	fatty acid biosynthesis II

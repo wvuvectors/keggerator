@@ -1,0 +1,13 @@
+#KO	#ogid	#locus	#pathway
+
+# biotin			
+K02169	2437	bioC	biotin biosynthesis
+K09458	192	fabF	biotin biosynthesis
+K00059	355	fabG	biotin biosynthesis
+K02372	132	fabZ	biotin biosynthesis
+K00208	582	fabI	biotin biosynthesis
+K02170	2435	bioH	biotin biosynthesis
+K00652	2440	bioF	biotin biosynthesis
+K00833	2441	bioA	biotin biosynthesis
+K01935	2438	bioD	biotin biosynthesis
+K01012	1588	bioB	biotin biosynthesis

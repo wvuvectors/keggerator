@@ -1,0 +1,128 @@
+#! /usr/bin/env bash
+
+here=$(dirname "$0")
+. "$here/version"
+
+
+while getopts ":hvf:g:x:t:k:o:" opt; do
+	case $opt in
+		h)
+			echo "
+kreconstruct v$VERSION.
+Created by $AUTHORS.
+
+Usage:
+  kreconstruct -f FA_FILE -g ORTH_FILE [-t TAXON_FILE] [-k KNUM_FILE || STRING] [-o OUTBASE]
+  kreconstruct -h
+  kreconstruct -v
+
+Options:
+  -h          Show this screen.
+  -v          Show version.
+  -f FILE     Protein fasta file used as original input to BlastKOALA.
+  -g FILE     Output file (.end) from ogre/orthoMCL containing the ortholog group assignments.
+  -x FILE     Output file from ktransfer, giving OG to K number correspondences.
+  -t FILE     File containing taxa, one per line, in order they should appear in the final output [default: order in the original protein fasta file].
+  -k FILE|STR File containing K numbers of pathway(s) to reconstruct; or, string identifying a pre-built set of K numbers [default: tca]. The file must have each K number on a separate line. It may also include locus tags and associated pathway/group names, in tab-delimited format. 
+              accepted STRING arguments to -k (case-insensitive):
+                 biotin, fattyacids, folate, glycerophospholipids, heme, lipopolysaccharide, nucleotides, peptidoglycan, queosine, tca, ubiquinone
+  -o OUTBASE  Print taxon-sorted summaries to files that begin with OUTBASE [default: kreconstruct.out].
+
+"
+			exit 0
+			;;
+		v)
+			echo "
+kreconstruct is part of the keggerator package.
+VERSION:  $VERSION.
+RELEASED: $RELEASE_DATE.
+AUTHORS:  $AUTHORS.
+
+$LICENSE_STR
+
+Please visit https://github.com/driscollmml/keggerator for more information or to download the source code.
+
+"
+			exit 0
+			;;
+		f)
+			fa_f=$OPTARG
+			;;
+		g)
+			og_f=$OPTARG
+			;;
+		x)
+			ktxfr_f=$OPTARG
+			;;
+		t)
+			tax_f=$OPTARG
+			;;
+		k)
+			knum_f=$OPTARG
+			;;
+		o)
+			outbase=$OPTARG
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+		:)
+			echo "Option -$OPTARG requires an argument." >&2
+			exit 1
+			;;
+	esac
+done
+
+
+if [ -z "$fa_f" ]; then
+	echo "FATAL : You must provide the original protein fasta file used to query BlastKOALA (-f)." >&2
+	exit 1
+fi
+
+if [ -z "$og_f" ]; then
+	echo "FATAL : You must provide the orthoMCL or ogre (.end) file containing the ortholog group assignments (-g)." >&2
+	exit 1
+fi
+
+if [ -z "$ktxfr_f" ]; then
+	echo "FATAL : You must provide the output file (table) from ktransfer with OG to K number assignments (-x)." >&2
+	exit 1
+fi
+
+if [ -z "$outbase" ]; then
+	echo "WARN  : No output base string provided (-o). Using the default 'kout' instead." >&2
+	outbase="kout"
+fi
+
+
+# extract taxa from the protein fasta file, if necessary
+if [ -z "$tax_f" ]; then
+	tax_f="$outbase.kreconstruct.taxa"
+	"$here/perl/fa_extract_tax.pl" -d "_" < "$fa_f" > "$tax_f"
+fi
+
+
+# build the list of K numbers, unless provided
+if [ -z "$knum_f" ]; then
+	knum_f="tca";
+fi
+if [ ! -f "$knum_f" ] && [ -f "$here/ksets/$knum_f" ];then
+	knum_f="$here/ksets/$knum_f"
+fi
+
+# extract OGs that correspond to the provided K numbers
+"$here/perl/og2ko.pl" "$knum_f" < "$ktxfr_f" > "$outbase.kreconstruct.id_map.txt"
+"$here/perl/og_extract.pl" -c 1 -i "$outbase.kreconstruct.id_map.txt" < $og_f > "$outbase.kreconstruct.end"
+
+
+# tabulate the OGs and sort according to taxonomy
+"$here/perl/og_tabulate.pl" -v lengths -s $tax_f -a $tax_f $fa_f < "$outbase.kreconstruct.end" | table_transpose.pl > "$outbase.kreconstruct.table.tmp"
+
+# replace OG ids (which are internally consistent but ultimately meaningless) with locus tag and subdivide by group
+"$here/perl/og_rename.pl" "$outbase.kreconstruct.id_map.txt" < "$outbase.kreconstruct.table.tmp" > "$outbase.kreconstruct.table.txt"
+
+rm "$outbase.kreconstruct.table.tmp"
+
+exit 0
+

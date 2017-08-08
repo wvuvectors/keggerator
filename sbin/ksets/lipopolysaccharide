@@ -1,0 +1,17 @@
+#KO	#ogid	#locus	#pathway
+
+# LPS biosynthesis			
+K01808	506	rpiB	LPS biosynthesis
+K06041	537	kdsD	LPS biosynthesis
+K01627	149	kdsA	LPS biosynthesis
+K03270	-2	kdsC	LPS biosynthesis
+K00979	393	kdsB	LPS biosynthesis
+K00677	314	lpxA	LPS biosynthesis
+K02535	119	lpxC	LPS biosynthesis
+K02536	82	lpxD	LPS biosynthesis
+K09949	129	lpxI	LPS biosynthesis
+K00748	703	lpxB	LPS biosynthesis
+K00912	176	lpxK	LPS biosynthesis
+K02527	102	waaA/kdtA	LPS biosynthesis
+K02517	561	lpxL	LPS biosynthesis
+K09778	83	lpxJ	LPS biosynthesis

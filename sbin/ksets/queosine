@@ -1,0 +1,11 @@
+#KO	#ogid	#locus	#pathway
+
+# queosine biosynthesis			
+K01495	116	folE	queuosine biosynthesis
+K01737	98	queD	queuosine biosynthesis
+K10026	236	queE	queuosine biosynthesis
+K06920	563	queC	queuosine biosynthesis
+K06879	612	queF	queuosine biosynthesis
+K00773	77	tgt	queuosine biosynthesis
+K07568	790	queA	queuosine biosynthesis
+K18979	-6	queG	queuosine biosynthesis
