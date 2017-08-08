@@ -77,7 +77,6 @@ You can also run the *keggerator* program scripts separately. There are four, lo
 1. `kcompile` requires as minimum input the original protein fasta file used to query BlastKOALA, and any BlastKOALA output html files (brite, pathway, and/or module). It constructs a master table assigning annotations and metabolic classifications ("KO numbers") to all possible proteins.
 2. `ktransfer` requires as minimum input the kcompile table from step 1, and the orthology file (.end) described above. It transfers metabolic assignments from individual proteins to their component ortholog groups.
 3. `kreconstruct` requires as minimum input the original protein fasta and orthology files, plus the output file from `ktransfer`. It creates a table showing the presence/absence of each metabolic component in each input genome. Optional arguments include a file of taxon names in sort order, and a file of K numbers to reconstruct.
-4. `khole` is not part of the primary `keggerator` pipeline. It accepts as input...
 
 For detailed instructions and all accepted arguments, simply run any program script with the -h flag; for example:
 `kcompile -h`
