@@ -116,6 +116,7 @@ while (my $line=<>) {
 # build the print order
 my @sorted_ogids = ();
 foreach my $ogid (@oglist) {
+	next if $ogid eq "ORPHAN";
 	push(@sorted_ogids, $ogid) if defined $printables{$ogid} or $ogid < 0;
 }
 

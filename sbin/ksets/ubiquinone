@@ -1,12 +1,12 @@
-#KO	#ogid	#locus	#pathway
+#KO	#locus	#pathway
 
 # ubiquinone biosynthesis			
-K03181	-5	ubiC	ubiquinone biosynthesis
-K03179	366	ubiA	ubiquinone biosynthesis
-K03186	112	ubiX	ubiquinone biosynthesis
-K03182	313	ubiD	ubiquinone biosynthesis
-K18800	-5	ubiI	ubiquinone biosynthesis
-K00568	352	ubiG	ubiquinone biosynthesis
-K03185	396	ubiH	ubiquinone biosynthesis
-K03183	412	ubiE	ubiquinone biosynthesis
-K06134	295	coq7	ubiquinone biosynthesis
+K03181	ubiC	ubiquinone biosynthesis
+K03179	ubiA	ubiquinone biosynthesis
+K03186	ubiX	ubiquinone biosynthesis
+K03182	ubiD	ubiquinone biosynthesis
+K18800	ubiI	ubiquinone biosynthesis
+K00568	ubiG	ubiquinone biosynthesis
+K03185	ubiH	ubiquinone biosynthesis
+K03183	ubiE	ubiquinone biosynthesis
+K06134	coq7	ubiquinone biosynthesis

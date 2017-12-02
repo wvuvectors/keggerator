@@ -1,0 +1,10 @@
+#KO	#locus	#pathway
+			
+# pyruvate metabolism
+K01006	ppdK	pyruvate metabolism - phosphoenolpyruvate (PEP) biosynthesis
+K01754	tdcB	pyruvate metabolism - glycine/serine biosynthesis
+K00600	glyA	pyruvate metabolism - glycine/serine biosynthesis
+K00161	pdhA	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)
+K00162	pdhB	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)
+K00627	pdhC	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)
+K00382	lpD	pyruvate metabolism - pyruvate dehydrogenase complex (PDC)

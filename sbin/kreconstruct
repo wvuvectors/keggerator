@@ -119,10 +119,15 @@ fi
 # tabulate the OGs and sort according to taxonomy
 "$here/perl/og_tabulate.pl" -v lengths -s $tax_f -a $tax_f $fa_f < "$outbase.kreconstruct.end" | table_transpose.pl > "$outbase.kreconstruct.table.tmp"
 
-# replace OG ids (which are internally consistent but ultimately meaningless) with locus tag and subdivide by group
-"$here/perl/og_rename.pl" "$outbase.kreconstruct.id_map.txt" < "$outbase.kreconstruct.table.tmp" > "$outbase.kreconstruct.table.txt"
+# add locus tags and subdivide by group
+"$here/perl/og_tag.pl" "$outbase.kreconstruct.id_map.txt" < "$outbase.kreconstruct.table.tmp" > "$outbase.kreconstruct.table.txt"
 
-rm "$outbase.kreconstruct.table.tmp"
+#rm "$outbase.kreconstruct.table.tmp"
+
+# sort the final table by the order of KO numbers in the initial $knum_f input file
+"$here/perl/og_sort.pl" "$knum_f" < "$outbase.kreconstruct.table.txt" > "$outbase.FINAL.table.txt"
+
+
 
 exit 0
 

@@ -1,6 +1,6 @@
 # INSTALL INSTRUCTIONS
 
-### keggerator v1.0
+### keggerator v1.1
 [https://github.com/driscollmml/keggerator](https://github.com/driscollmml/keggerator)
 
 

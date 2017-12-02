@@ -60,18 +60,20 @@ while (my $line = <>) {
 		
 	if ($count == 0) {
 		# replace OGs with tags
+		my $locusline = "Locus";
+		my $koline= "KO";
 		my @a = split /\t/, $line, -1;
 		shift @a;
 		my $ogid = shift @a;
-		$line = "Locus";
 		my $pos = 0;
 		while (defined $ogid) {
 			push @sorted_ogids, $ogid;
-			$line .= "\t$ogs[$pos]->{tag} ($ogs[$pos]->{ko})";
+			$locusline .= "\t$ogs[$pos]->{tag}";
+			$koline    .= "\t$ogs[$pos]->{ko}";
 			$pos++;
 			$ogid = shift @a;
 		}
-		print "$line\n";
+		print "$koline\n$locusline\n$line\n";
 		$count++;
 	} elsif ($count == 1) {
 		# replace the annotation line with group

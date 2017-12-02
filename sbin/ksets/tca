@@ -2,13 +2,13 @@
 			
 # citrate cycle (TCA cycle)			
 K00029	maeB	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
+K00027	maeA	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
 K00024	mdh	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
 K01647	gltA	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
 K01681	acnA	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
 K00031	icd	citrate cycle (TCA cycle) I - 2-oxoglutarate biosynthesis
 K00164	sucA	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
 K00658	sucB	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
-K00382	lpd	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
 K00382	lpd	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
 K01903	sucC	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
 K01902	sucD	citrate cycle (TCA cycle) IIa - succinyl-CoA biosynthesis
@@ -21,3 +21,4 @@ K00812	aspB/C	citrate cycle (TCA cycle) IIb - glutamate metabolism
 K00266	gltD	citrate cycle (TCA cycle) IIb - glutamate metabolism
 K15371	gdhX	citrate cycle (TCA cycle) IIb - glutamate metabolism
 K01915	glnA	citrate cycle (TCA cycle) IIb - glutamate metabolism
+K01425	glsA	citrate cycle (TCA cycle) IIb - glutamate metabolism

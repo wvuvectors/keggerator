@@ -1,4 +1,4 @@
-# keggerator v1.0
+# keggerator v1.1
 **Guided computational metabolic reconstruction using orthology.**
 
 ## Description

@@ -1,15 +1,15 @@
-#KO	#ogid	#locus	#pathway
+#KO	#locus	#pathway
 
 # glycerophospholipid biosynthesis			
-K00057	815	gpsA	glycerophospholipid biosynthesis I - DAG biosynthesis
-K03621	-3	plsX	glycerophospholipid biosynthesis I - DAG biosynthesis
-K00631	-3	plsB	glycerophospholipid biosynthesis I - DAG biosynthesis
-K08591	-3	plsY	glycerophospholipid biosynthesis I - DAG biosynthesis
-K00655	277	plsC	glycerophospholipid biosynthesis I - DAG biosynthesis
-K00981	499	cdsA	glycerophospholipid biosynthesis I - DAG biosynthesis
-K08744	235	pgsA	glycerophospholipid biosynthesis IIb - phosphatidylglycerol biosynthesis
-K01095	289	pgpA	glycerophospholipid biosynthesis IIb - phosphatidylglycerol biosynthesis
-K17103	334	pssA	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
-K01613	230	psd	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
-K05939	142	aas	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
-K17717	57	pld	glycerophospholipid biosynthesis I - DAG biosynthesis
+K00057	gpsA	glycerophospholipid biosynthesis I - DAG biosynthesis
+K03621	plsX	glycerophospholipid biosynthesis I - DAG biosynthesis
+K00631	plsB	glycerophospholipid biosynthesis I - DAG biosynthesis
+K08591	plsY	glycerophospholipid biosynthesis I - DAG biosynthesis
+K00655	plsC	glycerophospholipid biosynthesis I - DAG biosynthesis
+K00981	cdsA	glycerophospholipid biosynthesis I - DAG biosynthesis
+K08744	pgsA	glycerophospholipid biosynthesis IIb - phosphatidylglycerol biosynthesis
+K01095	pgpA	glycerophospholipid biosynthesis IIb - phosphatidylglycerol biosynthesis
+K17103	pssA	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
+K01613	psd	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
+K05939	aas	glycerophospholipid biosynthesis IIa - phosphatidylethanolamine biosynthesis
+K17717	pld	glycerophospholipid biosynthesis I - DAG biosynthesis

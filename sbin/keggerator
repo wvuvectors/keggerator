@@ -156,7 +156,7 @@ echo "
 
 ##############################################
 keggerator $VERSION has completed.
-Final results can be viewed in the file '$outbase.kreconstruct.table.txt'. This is a regular tab-delimited file and can be imported into Excel for easy viewing.
+Final results can be viewed in the file '$outbase.FINAL.table.txt'. This is a regular tab-delimited file and can be imported into Excel for easy viewing.
 
 Thank you!
 "

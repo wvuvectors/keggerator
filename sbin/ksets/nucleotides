@@ -1,30 +1,20 @@
-#KO	#ogid	#locus	#pathway
+#KO	#locus	#pathway
 
-# nucleotide metabolism			
-K00945	86	cmk	nucleotide metabolism
-K09903	656	pyrH	nucleotide metabolism
-K00940	280	ndk	nucleotide metabolism
-K00525	457	nrdA	nucleotide metabolism
-K00526	659	nrdB	nucleotide metabolism
-K00384	284	trxB	nucleotide metabolism
-K00384	687	trxB	nucleotide metabolism
-K00943	155	tmk	nucleotide metabolism
-K00943	2177	tmk	nucleotide metabolism
-K00943	2947	tmk	nucleotide metabolism
-K01520	476	dut	nucleotide metabolism
-K03465	245	thyX	nucleotide metabolism
-K00962	465	pnp	nucleotide metabolism
-K01937	837	pyrG	nucleotide metabolism
-K01937	2048	pyrG	nucleotide metabolism
-K01494	507	dcd	nucleotide metabolism
-K00942	514	gmk	nucleotide metabolism
-K01129	258	dgt	nucleotide metabolism
-K00951	865	relA/ spoT?	nucleotide metabolism
-K00951	1019	relA/ spoT?	nucleotide metabolism
-K00951	1292	relA/ spoT?	nucleotide metabolism
-K00951	1457	relA/ spoT?	nucleotide metabolism
-K00951	2042	relA/ spoT?	nucleotide metabolism
-K00951	2743	relA/ spoT?	nucleotide metabolism
-K01524	406	ppx-gppA	nucleotide metabolism
-K00939	734	adk	nucleotide metabolism
-K01923	654	purC	nucleotide metabolism
+K00945	cmk	nucleotide metabolism
+K09903	pyrH	nucleotide metabolism
+K00940	ndk	nucleotide metabolism
+K00525	nrdA	nucleotide metabolism
+K00526	nrdB	nucleotide metabolism
+K00384	trxB	nucleotide metabolism
+K00943	tmk	nucleotide metabolism
+K01520	dut	nucleotide metabolism
+K03465	thyX	nucleotide metabolism
+K00962	pnp	nucleotide metabolism
+K01937	pyrG	nucleotide metabolism
+K01494	dcd	nucleotide metabolism
+K00942	gmk	nucleotide metabolism
+K01129	dgt	nucleotide metabolism
+K00951	relA/ spoT?	nucleotide metabolism
+K01524	ppx-gppA	nucleotide metabolism
+K00939	adk	nucleotide metabolism
+K01923	purC	nucleotide metabolism
