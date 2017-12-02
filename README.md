@@ -6,7 +6,7 @@
 
 
 ## Attribution
-`keggerator` was written by [Timothy Driscoll](http://www.driscollMML.com/) at West Virginia University, Morgantown, WV USA, with much help and input from Joseph J. Gillespie at University of Maryland and Victoria Verhoeve at West Virginia University. If you use this code in your research, please cite our original research article: [Driscoll et al. "Wholly *Rickettsia*! Reconstructed metabolic profile for the quintessential bacterial parasite of eukaryotic cells." *mBio* X(X):XX-XX](http://??/).
+`keggerator` was written by [Timothy Driscoll](http://www.driscollMML.com/) at West Virginia University, Morgantown, WV USA, with much help and input from Joseph J. Gillespie at University of Maryland and Victoria Verhoeve at West Virginia University. If you use this code in your research, please cite our original research article: [Driscoll et al. "Wholly *Rickettsia*! Reconstructed metabolic profile for the quintessential bacterial parasite of eukaryotic cells." *mBio* 8(5):e00859-17](http://mbio.asm.org/content/8/5/e00859-17.full).
 
 
 ## Installation
@@ -28,7 +28,7 @@ Run the `keggerator` wrapper script, passing it the three inputs described above
 
 `keggerator -f FA_FILE -g ORTH_FILE (-p PWAY_DIR &| -m MODULE_DIR &| -b BRITE_DIR) [-o OUTBASE]`
 
-Run in this way, the wrapper script calls the three `keggerator` component programs sequentially (see "Method the Second" below for details). It produces a final table showing the presence/absence of each metabolic component in each input genome, as shown in Supplementary Figure S10 in [Driscoll et al. "Wholly *Rickettsia*! Reconstructed metabolic profile for the quintessential bacterial parasite of eukaryotic cells." *mBio* X(X):XX-XX](http://??/).
+Run in this way, the wrapper script calls the three `keggerator` component programs sequentially (see "Method the Second" below for details). It produces a final table showing the presence/absence of each metabolic component in each input genome, as shown in Supplementary Figure S10 in [Driscoll et al. "Wholly *Rickettsia*! Reconstructed metabolic profile for the quintessential bacterial parasite of eukaryotic cells." *mBio* 8(5):e00859-17](http://mbio.asm.org/content/8/5/e00859-17.full).
 
 ###### CustomStart
 
