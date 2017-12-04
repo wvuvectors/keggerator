@@ -29,8 +29,8 @@ die "FATAL : IDFILE is not defined.\n$usage\n" unless defined $idFile;
 die "FATAL : IDFILE ($idFile) is not a readable file.\n$usage\n" unless -f $idFile;
 
 
-my %ko_data     = ();
 my @ordered_kos = ();
+my %ko2locus    = ();
 
 # read in IDFILE
 open my $inFH, "<", "$idFile" or die "FATAL : IDFILE ($idFile) is not readable: $!\n$usage\n";
@@ -43,10 +43,8 @@ while (my $line = <$inFH>) {
 	my $locus = $a[0];
 	$locus = $a[1] if defined $a[1];
 	
-	$ko_data{$ko} = [];
-	push @{$ko_data{$ko}}, $ko;
-	push @{$ko_data{$ko}}, $locus;
 	push @ordered_kos, $ko;
+	$ko2locus{$ko} = $locus;
 }
 close $inFH;
 
@@ -54,45 +52,56 @@ close $inFH;
 # loop through the kreconstruct table
 # lists taxa, one per line, and their membership across different OGs
 # need to sort each column by its tag, as ordered in @ordered_kos
+# also must take into account multiple OGs for a single K
 
-my @ko_by_col = ();
-my @labels    = ();
+my @data = ();
+my $rowcount = 0;
 
-my $row = 0;
 while (my $line = <>) {
 	chomp $line;
 	next if $line =~ /^\s*$/ or $line =~ /^#/;
-
-	my @a = split /\t/, $line, -1;
-	push @labels, shift(@a);
 	
-	if ($row == 0) {
-		my $ko = shift @a;
-		while (defined $ko) {
-			push @ko_by_col, $ko;
-			$ko = shift @a;
-		}
-	} elsif ($row > 1) {
-		my $col = 0;
-		my $val = shift @a;
-		while (defined $val) {
-			my $ko = $ko_by_col[$col];
-			push @{$ko_data{$ko}}, $val;
-			$val = shift @a;
-			$col++;
-		}
+	$rowcount++;
+	
+	my @a = split /\t/, $line, -1;
+	
+	for (my $i=0; $i<scalar(@a); $i++) {
+		$data[$i] = [] unless defined $data[$i];
+		push @{$data[$i]}, $a[$i];
 	}
-	$row++;
 }
 
-#print Dumper(\%ko_data);
+#print Dumper(\@data);
+#die;
+
+
+my %ko2col = ();
+foreach my $ko (@ordered_kos) {
+	for (my $i=1; $i<scalar(@data); $i++) {
+		if ("$ko" eq "$data[$i]->[0]") {
+			$ko2col{$ko} = [] unless defined $ko2col{$ko};
+			push @{$ko2col{$ko}}, $i;
+		}
+	}
+}
+
+#print Dumper(\%ko2col);
+#die;
+
 
 # print the sorted data
-for (my $i=0; $i<scalar(@labels); $i++) {
-	print "$labels[$i]";
+for (my $i=0; $i<$rowcount; $i++) {
+	print "$data[0]->[$i]";
 	foreach my $ko (@ordered_kos) {
-		print "\t";
-		print "$ko_data{$ko}->[$i]" if defined $ko_data{$ko}->[$i];
+		if (defined $ko2col{$ko}) {
+			foreach my $col (@{$ko2col{$ko}}) {
+				print "\t$data[$col]->[$i]";
+			}
+		} else {
+			print "\t";
+			print "$ko" if $i == 0;
+			print "$ko2locus{$ko}" if $i == 1;
+		}
 	}
 	print "\n";
 }
