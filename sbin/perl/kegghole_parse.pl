@@ -51,8 +51,8 @@ my @kos = sort { $komap{$a} <=> $komap{$b} } keys %komap;
 unless (-f "$outbase.kegg_table.html") {
 	my $kostring = join "+", @kos;
 	my $post = "against=bacteria&mode=all&orthology=$kostring";
-	print STDERR "wget --quiet -O $outbase.kegg_table.html --post-data=\"$post\" http://www.kegg.jp/kegg-bin/view_ortholog_table\n";
-	system("wget --quiet -O $outbase.kegg_table.html --post-data=\"$post\" http://www.kegg.jp/kegg-bin/view_ortholog_table");
+	print STDERR "wget --quiet -O $outbase.kegg_table.html --post-data=\"$post\" https://www.kegg.jp/kegg-bin/view_ortholog_table\n";
+	system("wget --quiet -O $outbase.kegg_table.html --post-data=\"$post\" https://www.kegg.jp/kegg-bin/view_ortholog_table");
 }
 
 

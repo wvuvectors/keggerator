@@ -68,20 +68,20 @@ if [ -f "$outbase.kegg_table.txt" ]; then
 		echo "WARN : The old version will be backed up to $outbase.kegg_table.txt.bk."
 		mv "$outbase.kegg_table.txt" "$outbase.kegg_table.txt.bk"
 		echo "kegghole_parse.pl $outbase < $kolist > $outbase.kegg_table.txt"
-		kegghole_parse.pl $outbase < $kolist > $outbase.kegg_table.txt
+		"$here/perl/kegghole_parse.pl" "$outbase" < $kolist > $outbase.kegg_table.txt
 	fi
 else
 	echo "kegghole_parse.pl $outbase < $kolist > $outbase.kegg_table.txt"
-	kegghole_parse.pl $outbase < $kolist > $outbase.kegg_table.txt
+	"$here/perl/kegghole_parse.pl" $outbase < $kolist > $outbase.kegg_table.txt
 fi
 
 
 if [ -z "$pfile" ];then
 	echo "kegghole_sum.pl $outbase < $outbase.kegg_table.txt"
-	kegghole_sum.pl $outbase < $outbase.kegg_table.txt
+	"$here/perl/kegghole_sum.pl" $outbase < $outbase.kegg_table.txt
 else
 	echo "kegghole_sum.pl -p $pfile $outbase < $outbase.kegg_table.txt"
-	kegghole_sum.pl -p "$pfile" $outbase < $outbase.kegg_table.txt
+	"$here/perl/kegghole_sum.pl" -p "$pfile" $outbase < $outbase.kegg_table.txt
 fi
 
 echo ""
