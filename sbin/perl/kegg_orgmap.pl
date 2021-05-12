@@ -24,7 +24,7 @@ my %orgmap = ();
 
 
 # use wget to fetch the genome map table (html) from KEGG
-my $url = "http://www.kegg.jp/kegg/catalog/org_list.html";
+my $url = "https://www.kegg.jp/kegg/catalog/org_list.html";
 #print STDERR "wget --quiet \"$url\"\n";
 #my $htmlstr = `wget --quiet \"$url\"`;
 
@@ -33,6 +33,8 @@ my $htmlstr = `curl \"$url\"`;
 print STDERR "html back: " . length($htmlstr) . "\n";
 
 $htmlstr =~ s/\n//gi;
+$htmlstr =~ s/'//gi;
+$htmlstr =~ s/"//gi;
 
 #print "$htmlstr\n";
 #die;
@@ -41,22 +43,23 @@ my @groups = ();
 
 # parse the html table rows into array
 while ($htmlstr =~ /<tr align=center>(.+?)<\/tr>/gi) {
-	#print "$1\n";
-	#die;
+#	print "$1\n";
+#	die;
 	my @cells = split /<\/td>/, $1, -1;
-	next unless scalar @cells > 2;
+	next unless scalar @cells > 1;
 	
 	my ($key, $linn, $common);
 	my $foundgrps = 0;
+#	print Dumper(\@cells);
 	
 	foreach my $cell (@cells) {
-		if ($cell =~ /show_organism\?category=(.+?)\'>/i) {
+		if ($cell =~ /show_organism\?category=(.+?)>/i) {
 			@groups = () if $foundgrps == 0;
 			$foundgrps++;
 			push @groups, $1;
-		} elsif ($cell =~ /show_organism\?org=(.+?)'>/i) {
+		} elsif ($cell =~ /show_organism\?org=(.+?) /i) {
 			$key = $1;
-		} elsif ($cell =~ /www_bfind\?.+?'>(.+?)<\/a>/i) {
+		} elsif ($cell =~ /www_bfind\?.+?>(.+?)<\/a>/i) {
 			$linn = trim($1);
 		}
 	}
@@ -69,6 +72,10 @@ while ($htmlstr =~ /<tr align=center>(.+?)<\/tr>/gi) {
 	}
 	
 }
+
+#print Dumper(\%orgmap);
+#die;
+
 
 # output map to tab-delim format
 
